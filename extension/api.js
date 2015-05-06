@@ -17,7 +17,7 @@
 			xhr.open(method, url);
 			if (headers) {
 				Object.keys(headers).forEach(function (k) {
-					xhr.setRequestHeader(k,headers[k]);
+					xhr.setRequestHeader(k, headers[k]);
 				});
 			}
 			xhr.send();
@@ -57,7 +57,7 @@
 	window.gitHubNotifCount = function (callback) {
 		var token = GitHubNotify.settings.get('oauthToken');
 		var opts = {
-				Authorization:'token ' + token
+				Authorization: 'token ' + token
 		};
 		var participating = GitHubNotify.settings.get('useParticipatingCount')
 			? '?participating=true'
@@ -78,27 +78,27 @@
 		xhr('GET', url, opts, function (data, status, response) {
 			var interval = Number(response.getResponseHeader('X-Poll-Interval'));
 			if (status >= 400) {
-				callback(-1,interval);
+				callback(-1, interval);
 				return;
 			}
 
 			if (status === 304) {
-				callback(-3,interval);
+				callback(-3, interval);
 				return;
 			}
 
 			try {
 				data = JSON.parse(data);
 			} catch (err) {
-				callback(-1,interval);
+				callback(-1, interval);
 				return;
 			}
 
 			if (data && data.hasOwnProperty('length')) {
-				callback(String(data.length),interval);
+				callback(String(data.length), interval);
 				return;
 			}
-			callback(-2,interval);
+			callback(-2, interval);
 			return;
 		});
 	};

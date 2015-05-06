@@ -19,7 +19,7 @@
 		gitHubNotifCount(function (count, interval) {
 			var period = 1;
 			if (interval !== GitHubNotify.settings.get('interval')) {
-				GitHubNotify.settings.set('interval',interval);
+				GitHubNotify.settings.set('interval', interval);
 				period = interval / 60;
 				if (period < 1) {
 					period = 1;
