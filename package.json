@@ -7,7 +7,7 @@
     "test": "eslint extension/*.js"
   },
   "pre-commit": [
-    "eslint extension/*.js"
+    "./node_modules/.bin/eslint extension/*.js"
   ],
   "pre-push" : [
     "npm test"
